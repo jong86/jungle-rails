@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20160625062916) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "films", primary_key: "code", force: :cascade do |t|
+    t.string  "title",     limit: 40, null: false
+    t.integer "did",                  null: false
+    t.date    "date_prod"
+    t.string  "kind",      limit: 10
+    t.string  "len"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
