@@ -29,9 +29,13 @@
       <ul class="nav navbar-nav navbar-right">
 
         <!-- User login/register -->
-        <li><%= link_to 'Log in', login_path %></li>
-        <li><%= link_to 'Register', register_path %></li>
-        <li><%= link_to 'Log out', logout_path, method: 'DELETE' %></li>
+
+        <% if session[:user_id] %>
+          <li><%= link_to 'Log out', logout_path, method: 'DELETE' %></li>
+        <% else %>
+          <li><%= link_to 'Log in', login_path %></li>
+          <li><%= link_to 'Register', register_path %></li>
+        <% end %>
 
         <!-- Admin menu -->
         <li class="dropdown">
