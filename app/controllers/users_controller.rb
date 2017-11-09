@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     # byebug
     if user_params[:password] == user_params[:password_confirmation]
-      user = User.new(name: user_params[:name], email: user_params[:email], password: user_params[:password])
+      user = User.new(user_params)
       if user.save
         session[:user_id] = user.id
         redirect_to '/'
