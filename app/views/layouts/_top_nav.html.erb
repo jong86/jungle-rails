@@ -29,9 +29,9 @@
       <ul class="nav navbar-nav navbar-right">
 
         <!-- User login/register -->
-        <li><%= link_to 'Log in', login_users_path %></li>
-        <li><%= link_to 'Register', register_users_path %></li>
-        <li><%= link_to 'Log out', logout_users_path %></li>
+        <li><%= link_to 'Log in', login_path %></li>
+        <li><%= link_to 'Register', register_path %></li>
+        <li><%= link_to 'Log out', logout_path, method: 'DELETE' %></li>
 
         <!-- Admin menu -->
         <li class="dropdown">

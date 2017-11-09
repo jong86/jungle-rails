@@ -1,33 +1,26 @@
 class UsersController < ApplicationController
-  def login
-  end
-
-  def logout
-  end
-
-
-  def register
+  def new
     @user = User.new
   end
 
-
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to [:root], notice: 'You are now registered!'
+    # byebug
+    if user_params[:password] == user_params[:password_confirmation]
+      user = User.new(name: user_params[:name], email: user_params[:email], password: user_params[:password])
+      if user.save
+        session[:user_id] = user.id
+        redirect_to '/'
+      else
+        redirect_to '/register'
+      end
     else
-      render register_users_path
+      render 'users/new'
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(
-      :name,
-      :email,
-      :password,
-    )
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
