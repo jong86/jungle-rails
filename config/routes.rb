@@ -18,12 +18,24 @@ Rails.application.routes.draw do
     resources :categories, except: [:edit, :update, :show, :destroy]
   end
 
-  namespace :users do
+  # namespace :users do
+  #   get :login
+  #   post :login
+
+  #   post :logout
+
+  #   get :register
+  #   resource :register, only: [:create]
+  # end
+
+  resource :users, only: [:create] do
     get :login
     post :login
-    get :register
-    post :register
+
     post :logout
+
+    get :register
+    # resource :register, only: [:create]
   end
 
 
