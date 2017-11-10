@@ -1,0 +1,21 @@
+<p>
+  Order confirmed, <%= @order.email %>
+</p>
+<p>
+  <%= @user.name %>, you are awesome.
+</p>
+<p>
+  For order id # <%= @order.id %>
+</p>
+
+Items:
+<% @order.line_items.each do |item| %>
+  <p>
+    Product ID: <%= item.product_id%> | Quantity: <%= item.quantity %>
+  </p>
+<% end %>
+
+<p>
+Order total:<%= @order.total %>
+</p>
+

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if user_params[:password] == user_params[:password_confirmation]
       user = User.new(user_params)
       if user.save
+        #UserMailer.welcome_email(user).deliver_now # Sends confirmation email
         session[:user_id] = user.id
         redirect_to '/'
       else
