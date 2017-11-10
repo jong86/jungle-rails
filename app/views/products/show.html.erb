@@ -26,6 +26,67 @@
       </div>
     </div>
 
+    <div class="reviews-container">
+      <div class="row">
+        <div class="col-sm-2">
+          Product Id
+        </div>
+        <div class="col-sm-2">
+          User Id
+        </div>
+        <div class="col-sm-2">
+          Description
+        </div>
+        <div class="col-sm-2">
+          Rating
+        </div>
+        <div class="col-sm-2">
+          Updated At
+        </div>
+      </div>
+
+      <% @product.reviews.each do |review| %>
+        <div class="row">
+          <div class="col-sm-2">
+            <%= review.product_id %>
+          </div>
+          <div class="col-sm-2">
+            <%= review.user_id %>
+          </div>
+          <div class="col-sm-2">
+            <%= review.description %>
+          </div>
+          <div class="col-sm-2">
+            <%= review.rating %>
+          </div>
+          <div class="col-sm-2">
+            <%= review.updated_at.strftime("%Y-%b-%d %I:%M%p") %>
+          </div>
+        </div>
+      <% end %>
+
+
+      <div class="new-review-form">
+        <%= form_for [@product, @review] do |form| %>
+
+          <div class="form-group">
+            <%= form.label :rating %>
+            <%= form.select :rating, (1..5) %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: 'textarea' %>
+          </div>
+
+          <%= form.submit 'Submit review', class: 'btn btn-primary' %>
+
+        <% end %>
+      </div>
+
+
+    </div>
+
   </article>
 
 </section>
