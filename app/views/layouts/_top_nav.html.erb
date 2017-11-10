@@ -30,7 +30,7 @@
 
         <!-- User login/register -->
 
-        <% if session[:user_id] %>
+        <% if current_user %>
           <li><%= link_to 'Log out', logout_path, method: 'DELETE' %></li>
         <% else %>
           <li><%= link_to 'Log in', login_path %></li>

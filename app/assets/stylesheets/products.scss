@@ -85,7 +85,6 @@ $border-color: rgb(218, 218, 218);
 }
 
 main section.products-show {
-
   .product-detail {
     img.main-img {
       max-width: 100%;
@@ -95,12 +94,14 @@ main section.products-show {
 
   .reviews-container {
 
+    overflow: hidden;
+
     border: 1px solid $border-color;
 
     .row {
+
       border-bottom: 1px solid $border-color;
       padding: 0.5em;
-      overflow: hidden;
     }
 
   }

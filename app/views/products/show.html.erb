@@ -7,11 +7,9 @@
   <article class="product-detail">
 
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
-
       <div class="col-sm-8">
         <dl class="dl-horizontal">
           <dt>Name</dt>
@@ -26,66 +24,95 @@
       </div>
     </div>
 
-    <div class="reviews-container">
-      <div class="row">
-        <div class="col-sm-2">
-          Product Id
-        </div>
-        <div class="col-sm-2">
-          User Id
-        </div>
-        <div class="col-sm-2">
-          Description
-        </div>
-        <div class="col-sm-2">
-          Rating
-        </div>
-        <div class="col-sm-2">
-          Updated At
-        </div>
-      </div>
 
-      <% @product.reviews.each do |review| %>
+    <% @product.reviews.any? do %>
+      <div class="reviews-container table-responsive">
         <div class="row">
           <div class="col-sm-2">
-            <%= review.product_id %>
+            Product Id
           </div>
           <div class="col-sm-2">
-            <%= review.user_id %>
+            User Id
           </div>
           <div class="col-sm-2">
-            <%= review.description %>
+            Description
+          </div>
+          <div class="col-sm-1">
+            Rating
           </div>
           <div class="col-sm-2">
-            <%= review.rating %>
+            Created At
           </div>
           <div class="col-sm-2">
-            <%= review.updated_at.strftime("%Y-%b-%d %I:%M%p") %>
+            Updated At
+          </div>
+          <div class="col-sm-1">
           </div>
         </div>
-      <% end %>
 
-
-      <div class="new-review-form">
-        <%= form_for [@product, @review] do |form| %>
-
-          <div class="form-group">
-            <%= form.label :rating %>
-            <%= form.select :rating, (1..5) %>
+        <% @product.reviews.reverse_each do |review| %>
+          <div class="row">
+            <div class="col-sm-2">
+              <%= review.product_id %>
+            </div>
+            <div class="col-sm-2">
+              <%= review.user_id %>
+            </div>
+            <div class="col-sm-2">
+              <%= review.description %>
+            </div>
+            <div class="col-sm-1">
+              <%= review.rating %>
+            </div>
+            <div class="col-sm-2">
+              <%= review.created_at.strftime("%Y-%b-%d %I:%M%p") %>
+            </div>
+            <div class="col-sm-2">
+              <%= review.updated_at.strftime("%Y-%b-%d %I:%M%p") %>
+            </div>
+            <div class="col-sm-1">
+              <% if current_user && review.user_id == current_user.id %>
+                <%= link_to 'Delete', review_path(review_id: review.id), method: 'DELETE' %>
+              <% end %>
+            </div>
           </div>
-
-          <div class="form-group">
-            <%= form.label :description %>
-            <%= form.text_area :description, class: 'textarea' %>
-          </div>
-
-          <%= form.submit 'Submit review', class: 'btn btn-primary' %>
-
         <% end %>
+
+    <% end %>
+
+        <% if current_user %>
+          <div class="new-review-form">
+            <div class="row">
+              <%= form_for [@product, @review] do |form| %>
+
+                <div class="col-sm-2">
+                  Have you tried this product before? Leave a review!
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <%= form.label :rating %>
+                    <%= form.select :rating, (1..5) %>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= form.label :description %>
+                    <%= form.text_area :description, class: 'textarea' %>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <%= form.submit 'Submit review', class: 'btn btn-primary' %>
+                </div>
+
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
       </div>
-
-
-    </div>
 
   </article>
 
