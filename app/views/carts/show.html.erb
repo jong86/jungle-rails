@@ -46,7 +46,7 @@
             data-name="Jungle"
             data-description="Your Jungle order"
             data-locale="auto"
-            data-email="fake email"
+            data-email=<%= if current_user then @user.email end %>
             data-currency="cad">
           </script>
         <% end %>

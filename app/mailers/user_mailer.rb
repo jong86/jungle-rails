@@ -2,7 +2,6 @@ class UserMailer < ApplicationMailer
 
   def order_email(order)
     @order = order
-    @user = User.find(8)
 
     @line_items = LineItem.where(order_id: order.id)
     @products = []
@@ -11,9 +10,7 @@ class UserMailer < ApplicationMailer
       @products.push(Product.where(product_id: item[:product_id]))
     end
 
-
-
-
     mail(to: order.email, subject: 'Your Jungle order')
+
   end
 end
