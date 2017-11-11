@@ -8,13 +8,10 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     @review = Review.new
 
-    @reviews_users = {} # to send name of reviewer to partial
+    @reviews_users = {} # to send name of reviewer to review partial
     @product.reviews.each do |review|
       @reviews_users[review.id] = User.select("first_name, last_name").find(review.user_id)
     end
-
-
-
   end
 
 end

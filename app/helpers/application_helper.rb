@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+  # Converts number ratings into stars:
   def display_stars(rating)
     output = ''
     orig_rating = rating
@@ -14,4 +16,5 @@ module ApplicationHelper
     end
     output.html_safe
   end
+
 end

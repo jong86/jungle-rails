@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
   def show
+    # This ternary prevents a crash if user not logged in:
     @user = current_user ? User.find(session[:user_id]) : nil
     @cart = cart
   end

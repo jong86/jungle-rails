@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
     review = Review.new(review_params)
 
     review.user_id = current_user.id
+
+    # product_id wasn't unpacking for some reason in review_params so had to add this manually:
     review.product_id = params[:product_id]
 
     if review.save
