@@ -108,6 +108,7 @@ cat2.products.create!({
   price: 2_026.29
 })
 
+
 cat3.products.create!({
   name:  'Optimal Sleeping Bed',
   description: Faker::Hipster.paragraph(4),
@@ -131,6 +132,5 @@ cat3.products.create!({
   quantity: 23,
   price: 2_483.75
 })
-
 
 puts "DONE!"
