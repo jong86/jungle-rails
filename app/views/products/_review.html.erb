@@ -1,0 +1,17 @@
+<article class="review">
+  <div>
+    <%= display_stars(review.rating) %>
+  </div>
+  <div class="info">
+    By
+    <span class="username"><%= username %></span>
+    on
+    <span class="created-at"><%= review.created_at.strftime("%B %d, %Y") %></span>
+  </div>
+  <p class="description">
+    <%= review.description %>
+  </p>
+  <% if current_user && review.user_id == current_user.id %>
+    <span class="delete"><%= link_to "delete", review_path(review_id: review.id), method: 'DELETE' %></span>
+  <% end %>
+</article>
