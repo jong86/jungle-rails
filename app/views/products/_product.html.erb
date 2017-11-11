@@ -5,6 +5,13 @@
       <h4><%= product.name %></h4>
     <% end %>
   </header>
+  <p>
+    <% if product.reviews.any? %>
+      <%= display_stars(product.reviews.average(:rating)) %>
+    <% else %>
+      <span>No reviews yet.</span>
+    <% end %>
+  </p>
   <p class="description">
     <%= product.description %>
   </p>
@@ -26,6 +33,4 @@
       SOLD OUT!
     </aside>
   <% end %>
-
-
 </article>

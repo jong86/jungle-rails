@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
   before_filter :authorize
 
   def create
-    # raise "Yay, Im here!"
     review = Review.new(review_params)
 
     review.user_id = current_user.id
@@ -16,7 +15,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    # byebug
     Review.find(params[:review_id]).destroy
     redirect_to "/products/#{params[:id]}"
   end
