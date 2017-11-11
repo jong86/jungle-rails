@@ -9,7 +9,7 @@
     <% if product.reviews.any? %>
       <%= display_stars(product.reviews.average(:rating)) %>
     <% else %>
-      <span>No reviews yet.</span>
+      <span>No reviews yet</span>
     <% end %>
   </p>
   <p class="description">
