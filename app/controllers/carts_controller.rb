@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
 
   def show
-    @user = User.find(session[:user_id])
+    @user = current_user ? User.find(session[:user_id]) : nil
     @cart = cart
   end
 

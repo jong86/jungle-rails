@@ -118,30 +118,30 @@ main section.products-show {
       padding: 0.5em;
     }
 
-    .new-review-form {
-      form {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
+  }
+}
+  .new-review-form {
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 
-        div {
-          display: flex;
-          padding: 1em;
-          // border: 1px dotted red;
-        }
+    div {
+      display: flex;
+      padding: 1em;
+      // border: 1px dotted red;
+    }
 
-        textarea {
-          resize: none
-        }
+    textarea {
+      resize: none
+    }
 
-        * {
-          margin: .2em;
-        }
+    * {
+      margin: .2em;
+    }
 
-        .submit {
-          align-self: flex-end;
-        }
-      }
+    .submit {
+      align-self: flex-end;
     }
   }
 }
