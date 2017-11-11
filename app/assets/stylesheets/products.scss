@@ -8,9 +8,6 @@ main section.categories-show {
     justify-content: space-around;
 
     p {
-      i {
-      color: goldenrod;
-      }
       span {
         font-size: 0.8em;
       }
@@ -93,6 +90,10 @@ $border-color: rgb(218, 218, 218);
   box-sizing: border-box;
 }
 
+i.star-ratings {
+  color: goldenrod;
+}
+
 main section.products-show {
   .product-detail {
 
@@ -113,11 +114,35 @@ main section.products-show {
     border: 1px solid $border-color;
 
     .row {
-
       border-bottom: 1px solid $border-color;
       padding: 0.5em;
     }
 
+    .new-review-form {
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        div {
+          display: flex;
+          padding: 1em;
+          // border: 1px dotted red;
+        }
+
+        textarea {
+          resize: none
+        }
+
+        * {
+          margin: .2em;
+        }
+
+        .submit {
+          align-self: flex-end;
+        }
+      }
+    }
   }
 }
 

@@ -62,7 +62,7 @@
               <%= review.description %>
             </div>
             <div class="col-sm-1">
-              <%= review.rating %>
+              <%= display_stars(review.rating) %>
             </div>
             <div class="col-sm-2">
               <%= review.created_at.strftime("%Y-%b-%d %I:%M%p") %>
@@ -85,25 +85,21 @@
             <div class="row">
               <%= form_for [@product, @review] do |form| %>
 
-                <div class="col-sm-2">
-                  Have you tried this product before? Leave a review!
+                <div>
+                  Have you tried this product before?<br />Leave a review!
                 </div>
 
-                <div class="col-sm-2">
-                  <div class="form-group">
-                    <%= form.label :rating %>
-                    <%= form.select :rating, (1..5) %>
-                  </div>
+                <div>
+                  <%= form.label :rating do "Rating:" end %>
+                  <%= form.select :rating, (1..5) %>
                 </div>
 
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <%= form.label :description %>
-                    <%= form.text_area :description, class: 'textarea' %>
-                  </div>
+                <div>
+                  <%= form.label :description do "Description:" end %>
+                  <%= form.text_area :description, class: 'textarea' %>
                 </div>
 
-                <div class="col-sm-2">
+                <div class="submit">
                   <%= form.submit 'Submit review', class: 'btn btn-primary' %>
                 </div>
 
