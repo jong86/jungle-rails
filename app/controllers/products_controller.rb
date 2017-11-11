@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @reviews_users = {}
 
     @product.reviews.each do |review|
-      @reviews_users[review.id] = User.find(review.user_id)
+      @reviews_users[review.id] = User.select("first_name, last_name").find(review.user_id)
     end
 
   end

@@ -27,7 +27,7 @@
     <% @product.reviews.any? do %>
       <h3>Customer reviews</h3>
         <% @product.reviews.reverse_each do |review| %>
-          <%= render partial: "review", locals: { review: review, username: @reviews_users[review.id][:name] } %>
+          <%= render partial: "review", locals: { review: review, user: @reviews_users[review.id] } %>
         <% end %>
     <% end %>
 

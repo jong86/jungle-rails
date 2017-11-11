@@ -4,7 +4,7 @@
   </div>
   <div class="info">
     By
-    <span class="username"><%= username %></span>
+    <span class="username"><%= user[:first_name] %>&nbsp;<%= user[:last_name] %></span>
     on
     <span class="created-at"><%= review.created_at.strftime("%B %d, %Y") %></span>
   </div>
