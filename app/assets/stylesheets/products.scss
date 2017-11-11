@@ -91,7 +91,7 @@ $border-color: rgb(218, 218, 218);
 }
 
 i.star-ratings {
-  color: goldenrod;
+  color: rgb(228, 180, 9);
 }
 
 main section.products-show {
@@ -104,19 +104,33 @@ main section.products-show {
     .product-info {
       margin-bottom: 4em;
     }
-  }
 
+    .review {
+      max-width: 550px;
+      overflow: hidden;
+      border-radius: 5px;
+      background-color: #F1F1F1;
+      padding: 0.4em;
 
-  .reviews-container {
+      .info {
+        color: rgb(112, 112, 112);
+      }
 
-    overflow: hidden;
+      .username {
+        font-style: italic;
+        font-weight: bold;
+      }
 
-    border: 1px solid $border-color;
+      .description {
+        margin: 0;
+      }
 
-    .row {
-      border-bottom: 1px solid $border-color;
-      padding: 0.5em;
+      .delete {
+        font-size: 0.6em;
+        float: right;
+      }
     }
+
 
   }
 }
@@ -128,12 +142,16 @@ main section.products-show {
 
     div {
       display: flex;
-      padding: 1em;
-      // border: 1px dotted red;
+      padding: 0.2em;
+      margin: 1em 0;
+    }
+
+    .have-you-tried {
+      text-align: right;
     }
 
     textarea {
-      resize: none
+      resize: none;
     }
 
     * {

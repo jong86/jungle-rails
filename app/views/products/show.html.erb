@@ -24,85 +24,38 @@
       </div>
     </div>
 
-
     <% @product.reviews.any? do %>
-      <h3>Product reviews:</h3>
-      <div class="reviews-container table-responsive">
-        <div class="row">
-          <div class="col-sm-2">
-            Product Id
-          </div>
-          <div class="col-sm-2">
-            User Id
-          </div>
-          <div class="col-sm-2">
-            Description
-          </div>
-          <div class="col-sm-1">
-            Rating
-          </div>
-          <div class="col-sm-2">
-            Created At
-          </div>
-          <div class="col-sm-1">
-          </div>
-        </div>
-
+      <h3>Customer reviews</h3>
         <% @product.reviews.reverse_each do |review| %>
-          <div class="row">
-            <div class="col-sm-2">
-              <%= review.product_id %>
-            </div>
-            <div class="col-sm-2">
-              <%= review.user_id %>
-            </div>
-            <div class="col-sm-2">
-              <%= review.description %>
-            </div>
-            <div class="col-sm-1">
-              <%= display_stars(review.rating) %>
-            </div>
-            <div class="col-sm-2">
-              <%= review.created_at.strftime("%m/%d/%Y") %>
-            </div>
-            <div class="col-sm-1">
-              <% if current_user && review.user_id == current_user.id %>
-                <%= link_to fa_icon('trash'), review_path(review_id: review.id), method: 'DELETE', class: 'btn btn-sm btn-danger' %>
-              <% end %>
-            </div>
-          </div>
+          <%= render partial: "review", locals: { review: review, username: @reviews_users[review.id][:name] } %>
         <% end %>
     <% end %>
 
-        <% if current_user %>
-          <div class="new-review-form">
-            <div class="row">
-              <%= form_for [@product, @review] do |form| %>
+      <% if current_user %>
+        <div class="new-review-form">
+          <%= form_for [@product, @review] do |form| %>
 
-                <div>
-                  Have you tried this product before?<br />Leave a review!
-                </div>
-
-                <div>
-                  <%= form.label :rating do "Rating:" end %>
-                  <%= form.select :rating, (1..5) %>
-                </div>
-
-                <div>
-                  <%= form.label :description do "Description:" end %>
-                  <%= form.text_area :description, class: 'textarea' %>
-                </div>
-
-                <div class="submit">
-                  <%= form.submit 'Submit review', class: 'btn btn-primary' %>
-                </div>
-
-              <% end %>
+            <div class="have-you-tried">
+              Have you tried this product before?<br />Leave a review!
             </div>
-          </div>
-        <% end %>
 
-      </div>
+            <div>
+              <%= form.label :rating do "Rating" end %><br />
+              <%= form.select :rating, (1..5) %>
+            </div>
+
+            <div>
+              <%= form.label :description do "Description" end %><br />
+              <%= form.text_area :description, class: 'textarea', rows: 3, cols: 50 %>
+            </div>
+
+            <div class="submit">
+              <%= form.submit 'Submit review', class: 'btn btn-primary' %>
+            </div>
+
+          <% end %>
+        </div>
+      <% end %>
 
   </article>
 
