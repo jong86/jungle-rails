@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # byebug
     if user_params[:password] == user_params[:password_confirmation]
       user = User.new(user_params)
       if user.save
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
         redirect_to '/register'
       end
     else
-      render 'users/new'
+      redirect_to '/register'
     end
   end
 

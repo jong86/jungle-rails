@@ -63,6 +63,18 @@ RSpec.describe Product, type: :model do
       expect(@product.errors[:category]).to include("can't be blank")
     end
 
+    it "has a password with length >= 6" do
+      # @category = Category.create(name: 'Stuff')
+      @product = Product.create({
+        name:  'Red Bookshelf',
+        description: 'awesome thing',
+        image: 'bookshelf.jpg',
+        quantity: 23,
+        price: 2_483.75
+      })
+      expect(@product.errors[:category]).to include("can't be blank")
+    end
+
   end
 
 end
