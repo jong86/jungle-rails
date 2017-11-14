@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   describe 'Validations' do
-
     it "is saveable" do
       @category = Category.create(name: 'Stuff')
       @product = @category.products.create({
@@ -74,7 +73,5 @@ RSpec.describe Product, type: :model do
       })
       expect(@product.errors[:category]).to include("can't be blank")
     end
-
   end
-
 end

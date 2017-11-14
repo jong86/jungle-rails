@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   describe 'Validations' do
-
     it 'can create a valid user' do
       @user = User.create({
         first_name: 'Joe',
@@ -76,7 +75,6 @@ RSpec.describe User, type: :model do
       })
       expect(@user.errors[:password]).to include("is too short (minimum is 6 characters)")
     end
-
   end
 
 
@@ -128,7 +126,6 @@ RSpec.describe User, type: :model do
       method = User.authenticate_with_credentials('JoE_sOmEtHiNg@email.com', '123456')
       expect(method).to be_a User
     end
-
   end
 
 end
