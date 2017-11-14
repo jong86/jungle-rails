@@ -89,7 +89,7 @@ RSpec.describe User, type: :model do
         password: '123456',
         password_confirmation: '123456'
       })
-      method = @user.authenticate_with_credentials('something_else@email.com', '123456')
+      method = User.authenticate_with_credentials('something_else@email.com', '123456')
       expect(method).to be nil
     end
 
@@ -101,7 +101,7 @@ RSpec.describe User, type: :model do
         password: '123456',
         password_confirmation: '123456'
       })
-      method = @user.authenticate_with_credentials('joe_something@email.com', '123456')
+      method = User.authenticate_with_credentials('joe_something@email.com', '123456')
       expect(method).to be_a User
     end
 
@@ -113,7 +113,7 @@ RSpec.describe User, type: :model do
         password: '123456',
         password_confirmation: '123456'
       })
-      method = @user.authenticate_with_credentials('  joe_something@email.com', '123456')
+      method = User.authenticate_with_credentials('  joe_something@email.com', '123456')
       expect(method).to be_a User
     end
 
@@ -125,7 +125,7 @@ RSpec.describe User, type: :model do
         password: '123456',
         password_confirmation: '123456'
       })
-      method = @user.authenticate_with_credentials('JoE_sOmEtHiNg@email.com', '123456')
+      method = User.authenticate_with_credentials('JoE_sOmEtHiNg@email.com', '123456')
       expect(method).to be_a User
     end
 
